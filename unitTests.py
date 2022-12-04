@@ -14,7 +14,7 @@ class App:
     def __init__(self,  ex_number, content) -> None:
         self.content = content
         self.ex_number=ex_number
-        filename="source_code{}.py".format(self.ex_number)
+        filename="source_code_{}.py".format(self.ex_number)
         with open(filename,"w") as source_code:
             source_code.write(self.content)
         spec = importlib.util.spec_from_file_location("tp", filename)
@@ -66,7 +66,7 @@ def freq_counter_2(l):
 
 test_scores = {"ex1":0 , "ex2_1":0, "ex2_2":0, "ex3":0}
 class Ex1(unittest.TestCase):
-
+    
     def genTestCase(self, t1, t2, testCaseName):
         try:
             self.assertListEqual(swap_tuples(t1),tp.swap_tuples(t2))
@@ -153,6 +153,9 @@ exs = {"ex1":Ex1 , "ex2_1":Ex2_1 , "ex2_2":Ex2_2, "ex3" :Ex3}
 
 
 def runTest(ex_number,source_code):
+    #reset the current ex
+    test_scores[ex_number]=0
+    
     app = App(ex_number,source_code)
     print(app.content)
     print(app.ex_number)
