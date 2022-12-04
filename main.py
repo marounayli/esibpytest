@@ -33,11 +33,10 @@ def ex3Button_command():
     select_ex(ex3,"ex3")
 
 
-
 def sendCode():
     source_code = source_code_entry.get("1.0","end-1c")
     res = UT.runTest(selected_ex["selected"],source_code)
-    labels_buttons["ex1"][1]["text"] = "Your grade for {} is {}/5".format(selected_ex["selected"],res)
+    labels_buttons[selected_ex["selected"]][1]["text"] = "Your grade for {} is {}/5".format(selected_ex["selected"],res)
     
 
 
@@ -97,9 +96,22 @@ ex4["command"] = sendCode
 res_ex1 =Label()
 res_ex1["text"] = "Ex1 results = 0/5"
 res_ex1.place(x=1700, y=20)
-labels_buttons["ex1"] = (ex1,res_ex1)
 
+res_ex2 =Label()
+res_ex2["text"] = "Ex2 results = 0/5"
+res_ex2.place(x=1700, y=120)
+
+res_ex3=Label()
+res_ex3["text"] = "Ex3 results = 0/5"
+res_ex3.place(x=1700, y=220)
+
+
+
+labels_buttons["ex1"] = (ex1,res_ex1)
+labels_buttons["ex2"] = (ex2,res_ex2)
+labels_buttons["ex3"] = (ex3,res_ex3)
 buttons.append(ex3)
+
 source_code_entry = tk.Text(root)
 source_code_entry.place(x=300,y=120,width=1000, height=1000)
 root.mainloop()
