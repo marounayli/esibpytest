@@ -64,7 +64,7 @@ def freq_counter_2(l):
             ints[elt]+=1
     return dict(ints),dict(strs)
 
-test_scores = {"ex1":0 , "ex2_1":0, "ex2_2":0, "ex3":0}
+test_scores = {"ex1":0 , "ex2":0, "ex3":0, "ex4":0}
 class Ex1(unittest.TestCase):
     
     def genTestCase(self, t1, t2, testCaseName):
@@ -86,69 +86,69 @@ class Ex1(unittest.TestCase):
     def test5ex1(self):
         self.genTestCase([(1,1),(1,2),(2,0)] , [(1,1),(1,2),(2,0)], "ex1-test5")
 
-class Ex2_1(unittest.TestCase):
+class Ex2(unittest.TestCase):
 
     
     def genTestCase(self, text1, text2,testCaseName):
         try:
             self.assertDictEqual(freq_counter_1(text1),tp.freq_counter_1(text2))
             print(testCaseName , " success \u2714")
-            test_scores["ex2_1"] = test_scores["ex2_1"]+1 
+            test_scores["ex2"] = test_scores["ex2"]+1 
         except AssertionError:
             print("Test case failed in ", testCaseName,"\u274C")
 
     def test1ex2(self):
-        self.genTestCase("test1 test1 test2 hello","test1 test1 test2 hello","ex2_1-test1")               
+        self.genTestCase("test1 test1 test2 hello","test1 test1 test2 hello","ex2-test1")               
     def test2ex2(self):
-        self.genTestCase("test1 test1 test2 hello","test1 test1 test2 hello","ex2_1-test2") 
+        self.genTestCase("test1 test1 test2 hello","test1 test1 test2 hello","ex2-test2") 
     def test3ex2(self):
-        self.genTestCase("test1 test1 test2 hello","test1 test1 test2 hello","ex2_1-test3")
+        self.genTestCase("test1 test1 test2 hello","test1 test1 test2 hello","ex2-test3")
     def test4ex2(self):
-        self.genTestCase("Maximus", "Maximus","ex2_1-test4")
+        self.genTestCase("Maximus", "Maximus","ex2-test4")
     def test5ex2(self):
-        self.genTestCase("a", "a" , "ex2_1-test5")
+        self.genTestCase("a", "a" , "ex2-test5")
         
-class Ex2_2(unittest.TestCase):
+class Ex3(unittest.TestCase):
     def genTestCase(self, text1, text2,testCaseName):
         try:
             self.assertTupleEqual(freq_counter_2(text1),tp.freq_counter_2(text2))
-            print(testCaseName , " success \u2714")
-            test_scores["ex2_2"] = test_scores["ex2_2"]+1 
-        except AssertionError:
-            print("Test case failed in ", testCaseName,"\u274C")
-
-    def test1ex2(self):
-        self.genTestCase([1,2,1,1,2,"test","test","alpha"],[1,2,1,1,2,"test","test","alpha"],"ex2_2-test1")               
-    def test2ex2(self):
-        self.genTestCase([1,2,1,1,2,"test","test","alpha"],[1,2,1,1,2,"test","test","alpha"],"ex2_2-test2") 
-    def test3ex2(self):
-        self.genTestCase([1,2,1,1,2,"test","test","alpha"], [1,2,1,1,2,"test","test","alpha"],"ex2_2-test3")
-    def test4ex2(self):
-        self.genTestCase([1,2,1,1,2,"test","test","alpha"], [1,2,1,1,2,"test","test","alpha"],"ex2_2-test4")
-    def test5ex2(self):
-        self.genTestCase([1,2,1,1,2,"test","test","alpha"],[1,2,1,1,2,"test","test","alpha"], "ex2-test5")
-
-class Ex3(unittest.TestCase):
-    def genTestCase(self,t1,l1,t2,l2,testCaseName):
-        try:
-            self.assertEqual(canBeTypedWords(t1,l1),tp.canBeTypedWords(t2,l2))
             print(testCaseName , " success \u2714")
             test_scores["ex3"] = test_scores["ex3"]+1 
         except AssertionError:
             print("Test case failed in ", testCaseName,"\u274C")
 
     def test1ex2(self):
-        self.genTestCase("leet code","lt","leet code","lt","ex3-test1")
+        self.genTestCase([1,2,1,1,2,"test","test","alpha"],[1,2,1,1,2,"test","test","alpha"],"ex3-test1")               
     def test2ex2(self):
-        self.genTestCase("Let there be light","e","Let there be light","e","ex3-test2")
+        self.genTestCase([1,2,1,1,2,"test","test","alpha"],[1,2,1,1,2,"test","test","alpha"],"ex3-test2") 
     def test3ex2(self):
-        self.genTestCase("in war gods favor the sharper blade","ao","in war gods favor the sharper blade","ao","ex3-test3")
+        self.genTestCase([1,2,1,1,2,"test","test","alpha"], [1,2,1,1,2,"test","test","alpha"],"ex3-test3")
     def test4ex2(self):
-        self.genTestCase("artouro","lop","artouro","lop","ex3-test4")
+        self.genTestCase([1,2,1,1,2,"test","test","alpha"], [1,2,1,1,2,"test","test","alpha"],"ex3-test4")
     def test5ex2(self):
-        self.genTestCase("","","","","ex3-test5")
+        self.genTestCase([1,2,1,1,2,"test","test","alpha"],[1,2,1,1,2,"test","test","alpha"], "ex3-test5")
 
-exs = {"ex1":Ex1 , "ex2_1":Ex2_1 , "ex2_2":Ex2_2, "ex3" :Ex3}
+class Ex4(unittest.TestCase):
+    def genTestCase(self,t1,l1,t2,l2,testCaseName):
+        try:
+            self.assertEqual(canBeTypedWords(t1,l1),tp.canBeTypedWords(t2,l2))
+            print(testCaseName , " success \u2714")
+            test_scores["ex4"] = test_scores["ex4"]+1 
+        except AssertionError:
+            print("Test case failed in ", testCaseName,"\u274C")
+
+    def test1ex2(self):
+        self.genTestCase("leet code","lt","leet code","lt","ex4-test1")
+    def test2ex2(self):
+        self.genTestCase("Let there be light","e","Let there be light","e","ex4-test2")
+    def test3ex2(self):
+        self.genTestCase("in war gods favor the sharper blade","ao","in war gods favor the sharper blade","ao","ex4-test3")
+    def test4ex2(self):
+        self.genTestCase("artouro","lop","artouro","lop","ex4-test4")
+    def test5ex2(self):
+        self.genTestCase("","","","","ex4-test5")
+
+exs = {"ex1":Ex1 , "ex2":Ex2 , "ex3":Ex3, "ex4" :Ex4}
 
 
 
