@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont 
 from tkinter.ttk import *
 import unitTests as UT
+import encModule
 
 
 #This dictionary will contain the results of the tests
@@ -31,6 +32,8 @@ def select_ex(button_ref, name):
     button_ref["bg"] = "green"
 
 
+def generateGradeFile():
+    encModule.encrypt_grades(test_scores)
 
 ## function that will generate the event handlers for the exercices buttons
 def buttonFunctionGen(index,name):
@@ -55,10 +58,10 @@ root = tk.Tk()
 #setting title
 root.title("undefined")
 #setting window size
-width=2000
-height=1500
 screenwidth = root.winfo_screenwidth()
 screenheight = root.winfo_screenheight()
+width=screenwidth/2
+height=screenwidth/2
 alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
 root.geometry(alignstr)
 root.resizable(width=False, height=False)
@@ -84,7 +87,7 @@ def registerExercices(exercices):
         ex["command"] = exercices[i]["eventHandler"]
         res_ex=Label()
         res_ex["text"] = "{} results = 0/5".format(exercices[i]["name"])
-        res_ex.place(x=1700, y=20+local_y)
+        res_ex.place(x=1300, y=20+local_y)
         labels_buttons[exercices[i]["name"]] = (ex,res_ex)
         i+=1
         local_y+=60
@@ -99,8 +102,26 @@ submitButton["font"] = ft
 submitButton["fg"] = "#000000"
 submitButton["justify"] = "center"
 submitButton["text"] = "Submit"
-submitButton.place(x=20,y=240,width=120,height=40)
+submitButton.place(x=20,y=1000,width=120,height=40)
 submitButton["command"] = sendCode
+
+
+finalSubmitButton=tk.Button(root)
+finalSubmitButton["bg"] = "#f0f0f0"
+ft= tkFont.Font(family='Times',size=10)
+finalSubmitButton["font"] = ft
+finalSubmitButton["fg"] = "#000000"
+finalSubmitButton["justify"] = "center"
+finalSubmitButton["text"] = "Generate Grades File"
+finalSubmitButton.place(x=20,y=1200,width=300,height=40)
+finalSubmitButton["command"] = generateGradeFile
+
+
+# testb = tk.Button(root)
+# img = tk.PhotoImage(file="images/ex1-icon.png")
+# testb.config(image=img)
+# finalSubmitButton.place(x=20,y=1300,width=300,height=40)
+
 
 
 #The text box that the student will paste their source code in.
