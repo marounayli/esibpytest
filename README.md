@@ -19,4 +19,9 @@ When the bugs are fixed, please erase the issue from the list
 
 ## To implement:
 
-Code should be able to easily support a modular number of exercices.
+Figure out a way to imbed HTML and CSS in tkinter so that most of the UI is created using those.
+
+We need better styling
+
+We also need an efficient way to generate and evaluate test cases so that no source code modification is required when creating new exams
+
