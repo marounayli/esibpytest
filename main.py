@@ -61,9 +61,9 @@ root.title("undefined")
 screenwidth = root.winfo_screenwidth()
 screenheight = root.winfo_screenheight()
 width=screenwidth/2
-height=screenwidth/2
-# alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
-root.geometry('1000x600')
+height=screenheight/2
+alignstr = '%dx%d+%d+%d' % (width, height+100, (screenwidth - width) / 2, (screenheight - height) / 2)
+root.geometry(alignstr)
 root.resizable(width=False, height=False)
 root.configure(background = "#FAFBFC")
 frame = tk.Frame(root, background="#FAFBFC")
@@ -157,7 +157,7 @@ finalSubmitButton["command"] = generateGradeFile
 
 
 #The text box that the student will paste their source code in.
-source_code_entry = tk.Text(frame)
+source_code_entry = tk.Text(frame, relief="flat", borderwidth="1", bd=0)
 source_code_entry.grid(column=1, row=0)
 # source_code_entry.place(x=300,y=120,width=1000, height=1000)
 
